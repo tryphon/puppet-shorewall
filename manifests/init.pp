@@ -1,13 +1,15 @@
 class shorewall {
 
   package { shorewall: ensure => latest }
-  
+
   file { "/etc/shorewall":
     ensure => directory,
     source => "puppet:///files/shorewall/$fqdn",
     require => Package[shorewall],
     recurse => true,
-    notify => Service[shorewall]
+    notify => Service[shorewall],
+    # usefull for sandbox
+    links => follow
   }
 
   file { "/etc/default/shorewall":
