@@ -13,7 +13,7 @@ class shorewall {
   }
 
   file { "/etc/default/shorewall":
-    source => "puppet:///shorewall/shorewall.default",
+    source => "puppet:///modules/shorewall/shorewall.default",
     notify => Service[shorewall]
   }
 
